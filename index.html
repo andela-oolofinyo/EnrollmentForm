@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html ng-app="enrollmentForm">
+  <head>
+    <meta charset="utf-8">
+    <title>The Andela Enrollment Form</title>
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+  </head>
+  <body ng-controller="FormController">
+    <section>
+      <div>
+        <h2>Andela Enrollment Form</h2>
+      </div>
+      <div>
+
+        <p>Kindly Fill in Your Details Below</p>
+
+        <form name="EnrollmentData" ng-submit="submitForm()" class="simple-form">
+          <div>
+            <label>Name:</label> <input type="text" ng-model="user.name" placeholder="First Name, Last Name..." required/>
+          </div>
+          <div>
+            <label>Email:</label> <input type="email" ng-model="user.email" placeholder="Valid Email..." required/>
+          </div>
+          <div>
+            <label>Location:</label> <input type="text" ng-model="user.location" placeholder="City,Country.." required/>
+          </div>
+          <div>
+            <input type="submit" value="SUBMIT" />
+          </div>
+        </form>
+
+        <div>
+          <h3>RESULTS</h3>
+          <div ng-bind="formData.name"></div>
+          <div ng-bind="formData.email"></div>
+          <div ng-bind=" formData.location"></div>
+        </div>
+      </div>
+    </section>
+    <script type="text/javascript" src="angular.min.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+  </body>
+</html>
