@@ -1,8 +1,35 @@
-* {
+/** {
   border: 2px solid red !important;
-  }
+  }*/
 
 form{
   margin: 0 auto;
   display: inline-block;
+}
+
+
+.headingText{
+  margin: 0 auto;
+  text-align: center;
+}
+
+.forms{
+  margin: 0 auto;
+  text-align: center;
+}
+
+input.ng-pristine{
+  border:1px solid grey;
+}
+
+input.ng-invalid {
+  border: 1px solid red;
+}
+
+input.ng-valid{
+  border: 1px solid green;
+}
+
+table{
+  margin: 0 auto;
 }

@@ -3,39 +3,74 @@
   <head>
     <meta charset="utf-8">
     <title>The Andela Enrollment Form</title>
-    <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="main.css">
   </head>
   <body ng-controller="FormController">
     <section>
-      <div>
+
+      <div class="headingText">
         <h2>Andela Enrollment Form</h2>
       </div>
-      <div>
 
+      <div class="forms">
         <p>Kindly Fill in Your Details Below</p>
+        <form name="EnrollmentData" ng-submit="submitForm()" class="simple-form" novalidate>
 
-        <form name="EnrollmentData" ng-submit="submitForm()" class="simple-form">
-          <div>
-            <label>Name:</label> <input type="text" ng-model="user.name" placeholder="First Name, Last Name..." required/>
+          <div class="form-group" ng-class="{ 'has-error' : userForm.firstname.$invalid && !userForm.firstname.$pristine }">
+            <label>First Name:</label>
+            <input type="text" ng-model="user.firstname" placeholder="First Name" ng-minlength=3 ng-maxlength=20 required/>
+            <p ng-show="userForm.firstname.$invalid && !userForm.firstname.$pristine" class="help-block">Your First Name is Required.</p>
           </div>
-          <div>
-            <label>Email:</label> <input type="email" ng-model="user.email" placeholder="Valid Email..." required/>
+
+          <div class="form-group" ng-class="{ 'has-error' : userForm.lastname.$invalid && !userForm.lastname.$pristine }">
+            <label>Last Name:</label>
+            <input type="text" ng-model="user.lastname" placeholder="Last Name" ng-minlength=3 ng-maxlength=20 required/>
+            <p ng-show="userForm.lastname.$invalid && !userForm.lastname.$pristine" class="help-block">Your Last Name is Required.</p>
           </div>
-          <div>
-            <label>Location:</label> <input type="text" ng-model="user.location" placeholder="City,Country.." required/>
+
+          <div class="form-group" ng-class="{ 'has-error' : userForm.email.$invalid && !userForm.email.$pristine }">
+            <label>Email:</label> <input type="email" ng-model="user.email" placeholder="Valid Email" required/>
+            <p ng-show="userForm.email.$invalid && !userForm.email.$pristine" class="help-block">Your Email is Required.</p>
           </div>
+
+          <div class="form-group" ng-class="{ 'has-error' : userForm.location.$invalid && !userForm.location.$pristine }">
+            <label>Location:</label> <input type="text" ng-model="user.location" placeholder="City, Country" required/>
+            <p ng-show="userForm.location.$invalid && !userForm.location.$pristine" class="help-block">Your Location is Required.</p>
+          </div>
+
           <div>
             <input type="submit" value="SUBMIT" />
           </div>
+
         </form>
 
-        <div>
-          <h3>RESULTS</h3>
-          <div ng-bind="formData.name"></div>
-          <div ng-bind="formData.email"></div>
-          <div ng-bind=" formData.location"></div>
-        </div>
+        <table>
+
+          <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Location</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <div>
+              <tr>
+                <h3>RESULTS</h3>
+                  <td><div ng-bind="formData.firstname"></div></td>
+                  <td><div ng-bind="formData.lastname"></div></td>
+                  <td><div ng-bind="formData.email"></div></td>
+                  <td><div ng-bind="formData.location"></div></td>
+              </tr>
+            </div>
+          </tbody>
+
+        </table>
+
       </div>
+
     </section>
     <script type="text/javascript" src="angular.min.js"></script>
     <script type="text/javascript" src="app.js"></script>

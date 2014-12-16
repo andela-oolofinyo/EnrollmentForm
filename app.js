@@ -3,7 +3,8 @@ var app = angular.module('enrollmentForm', []);
 
     $scope.submitForm = function() {
         $scope.formData = {
-          'name': $scope.user.name,
+          'firstname': $scope.user.firstname,
+          'lastname': $scope.user.lastname,
           'email': $scope.user.email,
           'location': $scope.user.location
         };
